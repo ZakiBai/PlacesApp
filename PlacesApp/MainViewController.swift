@@ -31,9 +31,15 @@ class MainViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = restaurantsList[indexPath.row]
         cell.imageView?.image = UIImage(named: restaurantsList[indexPath.row])
+        cell.imageView?.layer.cornerRadius = cell.layer.bounds.height / 2
+        cell.imageView?.clipsToBounds = true
         return cell
     }
     
+    //MARK: -Table view delegate
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 85
+    }
 
     
     // MARK: - Navigation
