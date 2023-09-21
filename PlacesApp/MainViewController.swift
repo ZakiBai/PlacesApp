@@ -8,39 +8,28 @@
 import UIKit
 
 class MainViewController: UITableViewController {
-
-    let restaurantsList = ["Bonsai", "Burger Heroes", "Kitchen", "Love&Life", "Morris Pub", "Sherlock Holmes", "Speak Easy", "X.O", "Балкан Гриль", "Бочка", "Вкусные истории", "Дастархан", "Индокитай", "Классик", "Шок"]
+    
+    let places = Place.getPlaces()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        restaurantsList.count
+        places.count
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-        cell.nameLabel?.text = restaurantsList[indexPath.row]
-        cell.imageOfPlace?.image = UIImage(named: restaurantsList[indexPath.row])
+        cell.nameLabel?.text = places[indexPath.row].nameLabel
+        cell.locationLabel.text = places[indexPath.row].locationLabel
+        cell.typeLabel.text = places[indexPath.row].typeLabel
+        cell.imageOfPlace?.image = UIImage(named: places[indexPath.row].imageOfPlace)
         cell.imageOfPlace?.layer.cornerRadius = cell.imageOfPlace.frame.height / 2
         cell.imageOfPlace?.clipsToBounds = true
         return cell
     }
-    
-    //MARK: -Table view delegate
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 85
-    }
-
     
     // MARK: - Navigation
 
