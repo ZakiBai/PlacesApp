@@ -27,13 +27,20 @@ class AddPlaceViewController: UITableViewController {
         if indexPath.row == 0 {
             let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             
-            let camera = UIAlertAction(title: "Камера", style: .default) { _ in
+            let cameraIcon = UIImage(named: "camera")
+            let photoIcon = UIImage(named: "photo")
+            
+            let camera = UIAlertAction(title: "Camera", style: .default) { _ in
                 self.chooseImagePicker(source: .camera)
             }
+            camera.setValue(cameraIcon, forKey: "image")
+            camera.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
             
-            let photoLibrary = UIAlertAction(title: "Галерея", style: .default) { _ in
+            let photoLibrary = UIAlertAction(title: "Photo", style: .default) { _ in
                 self.chooseImagePicker(source: .photoLibrary)
             }
+            photoLibrary.setValue(photoIcon, forKey: "image")
+            photoLibrary.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
             
             let cancel = UIAlertAction(title: "Отмена", style: .cancel)
             
