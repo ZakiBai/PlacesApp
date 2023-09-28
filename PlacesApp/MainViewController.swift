@@ -9,7 +9,7 @@ import UIKit
 
 class MainViewController: UITableViewController {
     
-    let places = Place.getPlaces()
+    var places = Place.getPlaces()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,13 +22,26 @@ class MainViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-        cell.nameLabel?.text = places[indexPath.row].nameLabel
-        cell.locationLabel.text = places[indexPath.row].locationLabel
-        cell.typeLabel.text = places[indexPath.row].typeLabel
-        cell.imageOfPlace?.image = UIImage(named: places[indexPath.row].imageOfPlace)
+        
+        let place = places[indexPath.row]
+        
+        cell.nameLabel?.text = place.nameLabel
+        cell.locationLabel.text = place.locationLabel
+        cell.typeLabel.text = place.typeLabel
+        
+        if place.image == nil {
+            cell.imageOfPlace.image = UIImage(named: place.restaurantImage!)
+        } else {
+            cell.imageOfPlace.image = place.image
+        }
+        
         cell.imageOfPlace?.layer.cornerRadius = cell.imageOfPlace.frame.height / 2
         cell.imageOfPlace?.clipsToBounds = true
         return cell
+    }
+    // MARK: - Table view delegate
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        85
     }
     
     // MARK: - Navigation
@@ -39,7 +52,14 @@ class MainViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     
-    @IBAction func cancelAction(_ segue: UIStoryboardSegue) {}
+    @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
+        guard let addPlaceVC = segue.source as? AddPlaceViewController else { return }
+        addPlaceVC.saveNewPlace()
+        places.append(addPlaceVC.newPlace!)
+        tableView.reloadData()
+    }
+    
+    
     
 
 }

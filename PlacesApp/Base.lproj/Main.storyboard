@@ -202,13 +202,13 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ZW9-Jd-LBP">
                                                     <rect key="frame" x="16" y="5" width="288" height="50"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qPE-kX-bYl">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qPE-kX-bYl">
                                                             <rect key="frame" x="0.0" y="0.0" width="288" height="22.5"/>
                                                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Place name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bwi-OJ-ztU">
+                                                        <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Place type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bwi-OJ-ztU">
                                                             <rect key="frame" x="0.0" y="27.5" width="288" height="22.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
@@ -239,19 +239,27 @@
                     <navigationItem key="navigationItem" title="New Place" id="xCo-ZF-bXd">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="67n-Gu-Fkp">
                             <connections>
-                                <segue destination="tRK-4P-RFw" kind="unwind" unwindAction="cancelAction:" id="nTI-Dl-942"/>
+                                <action selector="cancelAction:" destination="tiO-Hb-BK5" id="ytS-14-Ekx"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="w4Z-8y-irT"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="w4Z-8y-irT">
+                            <connections>
+                                <segue destination="tRK-4P-RFw" kind="unwind" unwindAction="unwindSegue:" id="nBc-bL-oYJ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="imageOfPlace" destination="SuK-0O-Hpg" id="W41-i0-esL"/>
+                        <outlet property="placeImage" destination="SuK-0O-Hpg" id="W41-i0-esL"/>
+                        <outlet property="placeLocation" destination="nLf-Zv-VhU" id="Gue-4H-igX"/>
+                        <outlet property="placeName" destination="NdX-dp-Kyu" id="7rW-EQ-IVU"/>
+                        <outlet property="placeType" destination="Bwi-OJ-ztU" id="vwb-qR-FCa"/>
+                        <outlet property="saveButton" destination="w4Z-8y-irT" id="voC-BY-Xfs"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hHC-k1-3aN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="tRK-4P-RFw" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1608.75" y="-120.4225352112676"/>
+            <point key="canvasLocation" x="1596" y="-120"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qS2-fv-2gH">
