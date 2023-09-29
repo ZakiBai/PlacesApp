@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 class AddPlaceViewController: UITableViewController {
-
+    var currentPlace: Place?
     var imageIsChanged = false
     
     @IBOutlet var placeImage: UIImageView!
@@ -24,6 +24,7 @@ class AddPlaceViewController: UITableViewController {
 
         saveButton.isEnabled = false
         placeName.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        setupEditScreen()
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -62,7 +63,7 @@ class AddPlaceViewController: UITableViewController {
         dismiss(animated: true)
     }
     
-    func saveNewPlace() {
+    func savePlace() {
         
         var image: UIImage?
         
@@ -79,9 +80,41 @@ class AddPlaceViewController: UITableViewController {
                              locationLabel: placeLocation.text,
                              typeLabel: placeType.text)
         
-        StorageManager.saveObject(newPlace)
+        if currentPlace != nil {
+            try! realm.write {
+                currentPlace?.nameLabel = newPlace.nameLabel
+                currentPlace?.locationLabel = newPlace.locationLabel
+                currentPlace?.typeLabel = newPlace.typeLabel
+                currentPlace?.imageData = newPlace.imageData
+            }
+        } else {
+            StorageManager.saveObject(newPlace)
+        }
+        
     }
     
+    private func setupEditScreen() {
+        if currentPlace != nil {
+            setupNavigationBar()
+            imageIsChanged = true
+            placeName.text = currentPlace?.nameLabel
+            placeType.text = currentPlace?.typeLabel
+            placeLocation.text = currentPlace?.locationLabel
+            
+            guard let data = currentPlace?.imageData, let image = UIImage(data: data) else { return }
+            placeImage.image = image
+            placeImage.contentMode = .scaleAspectFill
+        }
+    }
+    
+    private func setupNavigationBar() {
+        if let topItem = navigationController?.navigationBar.topItem {
+            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        }
+        navigationItem.leftBarButtonItem = nil
+        title = currentPlace?.nameLabel
+        saveButton.isEnabled = true
+    }
 }
 
 extension AddPlaceViewController: UITextFieldDelegate {
