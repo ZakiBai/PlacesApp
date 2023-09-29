@@ -13,22 +13,11 @@ class Place: Object {
     @objc dynamic var locationLabel: String?
     @objc dynamic var typeLabel: String?
     
-    let restaurantsList = ["Bonsai", "Burger Heroes", "Kitchen", "Love&Life", "Morris Pub", "Sherlock Holmes", "Speak Easy", "X.O", "Балкан Гриль", "Бочка", "Вкусные истории", "Дастархан", "Индокитай", "Классик", "Шок"]
-    
-    func savePlaces() {
-        
-        for place in restaurantsList {
-            
-            let image = UIImage(named: place)
-            guard let imageData = image?.pngData() else { return }
-            
-            let newPlace = Place()
-            newPlace.nameLabel = place
-            newPlace.locationLabel = "Алматы"
-            newPlace.typeLabel = "Ресторан"
-            newPlace.imageData = imageData
-            
-            NetworkManager.saveObject(newPlace)
-        }
+    convenience init(nameLabel: String, imageData: Data?, locationLabel: String?, typeLabel: String?) {
+        self.init()
+        self.nameLabel = nameLabel
+        self.imageData = imageData
+        self.locationLabel = locationLabel
+        self.typeLabel = typeLabel
     }
 }

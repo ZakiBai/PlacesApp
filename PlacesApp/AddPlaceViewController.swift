@@ -9,7 +9,6 @@ import UIKit
 import RealmSwift
 class AddPlaceViewController: UITableViewController {
 
-    var newPlace = Place()
     var imageIsChanged = false
     
     @IBOutlet var placeImage: UIImageView!
@@ -21,9 +20,6 @@ class AddPlaceViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        DispatchQueue.main.async {
-            self.newPlace.savePlaces()
-        }
         print(Realm.Configuration.defaultConfiguration.fileURL!)
 
         saveButton.isEnabled = false
@@ -68,15 +64,22 @@ class AddPlaceViewController: UITableViewController {
     
     func saveNewPlace() {
         
-//        var image: UIImage?
+        var image: UIImage?
         
-//        if imageIsChanged {
-//            image = placeImage.image
-//        } else {
-//            image = UIImage(named: "imagePlaceholder")
-//        }
-//        
-//        newPlace = Place(restaurantImage: nil, image: image, nameLabel: placeName.text!, locationLabel: placeLocation.text, typeLabel: placeType.text)
+        if imageIsChanged {
+            image = placeImage.image
+        } else {
+            image = UIImage(named: "imagePlaceholder")
+        }
+
+        let imageData = image?.pngData()
+        
+        let newPlace = Place(nameLabel: placeName.text!,
+                             imageData: imageData,
+                             locationLabel: placeLocation.text,
+                             typeLabel: placeType.text)
+        
+        StorageManager.saveObject(newPlace)
     }
     
 }
