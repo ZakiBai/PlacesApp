@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		355226AC2AC44E5D007EA6E7 /* AddPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355226AB2AC44E5D007EA6E7 /* AddPlaceViewController.swift */; };
 		355C7EAD2AC6860B005FC1A3 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355C7EAC2AC6860B005FC1A3 /* StorageManager.swift */; };
+		356CB72C2ACEC70A0076B27E /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 356CB72B2ACEC70A0076B27E /* RatingControl.swift */; };
 		35DF2D402ABC47A8002EC602 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DF2D3F2ABC47A8002EC602 /* AppDelegate.swift */; };
 		35DF2D422ABC47A8002EC602 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35DF2D412ABC47A8002EC602 /* SceneDelegate.swift */; };
 		35DF2D472ABC47A8002EC602 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35DF2D452ABC47A8002EC602 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		355226AB2AC44E5D007EA6E7 /* AddPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlaceViewController.swift; sourceTree = "<group>"; };
 		355C7EAC2AC6860B005FC1A3 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		356CB72B2ACEC70A0076B27E /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		35DF2D3C2ABC47A8002EC602 /* PlacesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlacesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35DF2D3F2ABC47A8002EC602 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		35DF2D412ABC47A8002EC602 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				35DF2D3F2ABC47A8002EC602 /* AppDelegate.swift */,
 				35DF2D412ABC47A8002EC602 /* SceneDelegate.swift */,
 				35DF2D532ABC48C8002EC602 /* MainViewController.swift */,
+				356CB72B2ACEC70A0076B27E /* RatingControl.swift */,
 				35DF2D572ABC669C002EC602 /* PlaceModel.swift */,
 				35DF2D552ABC5DCF002EC602 /* CustomTableViewCell.swift */,
 				35DF2D452ABC47A8002EC602 /* Main.storyboard */,
@@ -222,6 +225,7 @@
 				35DF2D402ABC47A8002EC602 /* AppDelegate.swift in Sources */,
 				35DF2D422ABC47A8002EC602 /* SceneDelegate.swift in Sources */,
 				355C7EAD2AC6860B005FC1A3 /* StorageManager.swift in Sources */,
+				356CB72C2ACEC70A0076B27E /* RatingControl.swift in Sources */,
 				35DF2D582ABC669C002EC602 /* PlaceModel.swift in Sources */,
 				35DF2D562ABC5DCF002EC602 /* CustomTableViewCell.swift in Sources */,
 				35DF2D542ABC48C8002EC602 /* MainViewController.swift in Sources */,
