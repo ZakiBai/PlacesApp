@@ -263,8 +263,11 @@
                                 </constraints>
                                 <segments>
                                     <segment title="First"/>
-                                    <segment title="Second"/>
+                                    <segment title="Name"/>
                                 </segments>
+                                <connections>
+                                    <action selector="sortSelection:" destination="v6K-B7-P4b" eventType="valueChanged" id="weX-Xb-XM6"/>
+                                </connections>
                             </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wQO-UL-xYt"/>
@@ -280,7 +283,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="My Places" largeTitleDisplayMode="never" id="Thd-Er-QJU">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="AZ" id="Vwz-t6-ubf"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="AZ" id="Vwz-t6-ubf">
+                            <connections>
+                                <action selector="reversedSorting:" destination="v6K-B7-P4b" id="Vfd-VS-kJB"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="BvJ-xm-yka">
                             <connections>
                                 <segue destination="pHO-1k-64v" kind="presentation" id="ZHG-g0-EFY"/>
@@ -288,6 +295,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="reversedSortingButton" destination="Vwz-t6-ubf" id="kbu-Nd-FVR"/>
+                        <outlet property="segmentedControl" destination="Jqa-pI-9H9" id="Zlp-bj-nFe"/>
                         <outlet property="tableView" destination="xqo-pM-r7b" id="IyK-e7-VeY"/>
                     </connections>
                 </viewController>
