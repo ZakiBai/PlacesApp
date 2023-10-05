@@ -208,7 +208,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="xqo-pM-r7b">
-                                <rect key="frame" x="0.0" y="122" width="375" height="656"/>
+                                <rect key="frame" x="0.0" y="122" width="375" height="690"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="85" id="eTn-ta-6jT" customClass="CustomTableViewCell" customModule="PlacesApp" customModuleProvider="target">
@@ -219,7 +219,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="t99-rE-W0e">
-                                                    <rect key="frame" x="16" y="8" width="65" height="69"/>
+                                                    <rect key="frame" x="16" y="8" width="65" height="65"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="65" id="PHk-yV-47t"/>
                                                         <constraint firstAttribute="height" constant="65" id="w29-FM-oes"/>
@@ -251,12 +251,12 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="o7i-ZI-i03" firstAttribute="leading" secondItem="t99-rE-W0e" secondAttribute="trailing" constant="16" id="31b-u6-tLW"/>
-                                                <constraint firstAttribute="bottom" secondItem="t99-rE-W0e" secondAttribute="bottom" constant="8" id="XRq-kY-Zpk"/>
+                                                <constraint firstAttribute="bottom" secondItem="t99-rE-W0e" secondAttribute="bottom" constant="12" id="XRq-kY-Zpk"/>
                                                 <constraint firstAttribute="bottom" secondItem="o7i-ZI-i03" secondAttribute="bottom" constant="8" id="i6L-SH-oFm"/>
                                                 <constraint firstItem="t99-rE-W0e" firstAttribute="leading" secondItem="nMC-Wl-rX1" secondAttribute="leading" constant="16" id="qfu-P3-PaE"/>
                                                 <constraint firstItem="t99-rE-W0e" firstAttribute="top" secondItem="nMC-Wl-rX1" secondAttribute="top" constant="8" id="rng-wV-IVD"/>
                                                 <constraint firstItem="o7i-ZI-i03" firstAttribute="top" secondItem="nMC-Wl-rX1" secondAttribute="top" constant="8" id="v97-K0-P2c"/>
-                                                <constraint firstItem="t99-rE-W0e" firstAttribute="centerY" secondItem="nMC-Wl-rX1" secondAttribute="centerY" id="xOZ-no-ICh"/>
+                                                <constraint firstItem="t99-rE-W0e" firstAttribute="centerY" secondItem="nMC-Wl-rX1" secondAttribute="centerY" constant="-2" id="xOZ-no-ICh"/>
                                                 <constraint firstAttribute="trailing" secondItem="o7i-ZI-i03" secondAttribute="trailing" constant="16" id="yFj-Hp-ZM6"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -294,9 +294,9 @@
                             <constraint firstItem="Jqa-pI-9H9" firstAttribute="top" secondItem="wQO-UL-xYt" secondAttribute="top" id="2gI-7t-i3R"/>
                             <constraint firstItem="wQO-UL-xYt" firstAttribute="trailing" secondItem="xqo-pM-r7b" secondAttribute="trailing" id="6Dq-WE-Mxj"/>
                             <constraint firstItem="xqo-pM-r7b" firstAttribute="leading" secondItem="wQO-UL-xYt" secondAttribute="leading" id="KYj-mZ-48T"/>
-                            <constraint firstItem="wQO-UL-xYt" firstAttribute="bottom" secondItem="xqo-pM-r7b" secondAttribute="bottom" id="Lnz-Yl-wkH"/>
                             <constraint firstItem="wQO-UL-xYt" firstAttribute="trailing" secondItem="Jqa-pI-9H9" secondAttribute="trailing" id="RRf-D6-tlj"/>
                             <constraint firstItem="xqo-pM-r7b" firstAttribute="top" secondItem="Jqa-pI-9H9" secondAttribute="bottom" id="fUZ-kv-4gX"/>
+                            <constraint firstItem="xqo-pM-r7b" firstAttribute="bottom" secondItem="w58-Nb-fQN" secondAttribute="bottom" id="h7j-hz-BhK"/>
                             <constraint firstItem="Jqa-pI-9H9" firstAttribute="leading" secondItem="wQO-UL-xYt" secondAttribute="leading" id="s4X-a3-wyE"/>
                         </constraints>
                     </view>
@@ -320,7 +320,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rf5-9z-0oD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-49" y="-120"/>
+            <point key="canvasLocation" x="-50.399999999999999" y="-120.44334975369459"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qS2-fv-2gH">
