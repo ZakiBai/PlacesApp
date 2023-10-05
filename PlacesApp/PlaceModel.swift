@@ -13,12 +13,14 @@ class Place: Object {
     @objc dynamic var locationLabel: String?
     @objc dynamic var typeLabel: String?
     @objc dynamic var date = Date()
+    @objc dynamic var rating = 0.0
     
-    convenience init(nameLabel: String, imageData: Data?, locationLabel: String?, typeLabel: String?) {
+    convenience init(nameLabel: String, imageData: Data?, locationLabel: String?, typeLabel: String?, rating: Double) {
         self.init()
         self.nameLabel = nameLabel
         self.imageData = imageData
         self.locationLabel = locationLabel
         self.typeLabel = typeLabel
+        self.rating = rating
     }
 }

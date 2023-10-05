@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 class AddPlaceViewController: UITableViewController {
-    var currentPlace: Place?
+    var currentPlace: Place!
     var imageIsChanged = false
     
     @IBOutlet var placeImage: UIImageView!
@@ -16,6 +16,8 @@ class AddPlaceViewController: UITableViewController {
     @IBOutlet var placeName: UITextField!
     @IBOutlet var placeLocation: UITextField!
     @IBOutlet var placeType: UITextField!
+    
+    @IBOutlet var ratingControl: RatingControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +81,9 @@ class AddPlaceViewController: UITableViewController {
         let newPlace = Place(nameLabel: placeName.text!,
                              imageData: imageData,
                              locationLabel: placeLocation.text,
-                             typeLabel: placeType.text)
+                             typeLabel: placeType.text,
+                             rating: Double(ratingControl.rating)
+        )
         
         if currentPlace != nil {
             try! realm.write {
@@ -87,6 +91,7 @@ class AddPlaceViewController: UITableViewController {
                 currentPlace?.locationLabel = newPlace.locationLabel
                 currentPlace?.typeLabel = newPlace.typeLabel
                 currentPlace?.imageData = newPlace.imageData
+                currentPlace?.rating = newPlace.rating
             }
         } else {
             StorageManager.saveObject(newPlace)
@@ -101,6 +106,7 @@ class AddPlaceViewController: UITableViewController {
             placeName.text = currentPlace?.nameLabel
             placeType.text = currentPlace?.typeLabel
             placeLocation.text = currentPlace?.locationLabel
+            ratingControl.rating = Int(currentPlace.rating)
             
             guard let data = currentPlace?.imageData, let image = UIImage(data: data) else { return }
             placeImage.image = image
