@@ -7,9 +7,12 @@
 
 import UIKit
 import RealmSwift
+import Cosmos
+
 class AddPlaceViewController: UITableViewController {
     var currentPlace: Place!
     var imageIsChanged = false
+    var currentRating = 0.0
     
     @IBOutlet var placeImage: UIImageView!
     @IBOutlet var saveButton: UIBarButtonItem!
@@ -18,6 +21,8 @@ class AddPlaceViewController: UITableViewController {
     @IBOutlet var placeType: UITextField!
     
     @IBOutlet var ratingControl: RatingControl!
+    
+    @IBOutlet var cosmosView: CosmosView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +33,12 @@ class AddPlaceViewController: UITableViewController {
         saveButton.isEnabled = false
         placeName.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         setupEditScreen()
+        
+        cosmosView.settings.fillMode = .half
+        cosmosView.didTouchCosmos = { rating in
+            self.currentRating = rating
+            print("\(rating)")
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -82,7 +93,7 @@ class AddPlaceViewController: UITableViewController {
                              imageData: imageData,
                              locationLabel: placeLocation.text,
                              typeLabel: placeType.text,
-                             rating: Double(ratingControl.rating)
+                             rating: currentRating
         )
         
         if currentPlace != nil {
@@ -106,7 +117,7 @@ class AddPlaceViewController: UITableViewController {
             placeName.text = currentPlace?.nameLabel
             placeType.text = currentPlace?.typeLabel
             placeLocation.text = currentPlace?.locationLabel
-            ratingControl.rating = Int(currentPlace.rating)
+            cosmosView.rating = currentPlace.rating
             
             guard let data = currentPlace?.imageData, let image = UIImage(data: data) else { return }
             placeImage.image = image
