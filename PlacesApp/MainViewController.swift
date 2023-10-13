@@ -44,26 +44,19 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         if isFiltering {
             return filteredPlaces.count
         }
-        return places.isEmpty ? 0 : places.count
+        return places.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
         
-        var place = Place()
-        if isFiltering {
-            place = filteredPlaces[indexPath.row]
-        } else {
-            place = places[indexPath.row]
-        }
-        
+        let place = isFiltering ? filteredPlaces[indexPath.row] : places[indexPath.row]
         cell.nameLabel?.text = place.nameLabel
         cell.locationLabel.text = place.locationLabel
         cell.typeLabel.text = place.typeLabel
         cell.imageOfPlace.image = UIImage(data: place.imageData!)
+        cell.cosmosView.rating = place.rating
         
-        cell.imageOfPlace?.layer.cornerRadius = cell.imageOfPlace.frame.height / 2
-        cell.imageOfPlace?.clipsToBounds = true
         return cell
     }
     
@@ -75,18 +68,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         85
     }
-    
-    // Можем использовать данный метод, для одного действия он избыточен
-    //    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-    //        let place = places[indexPath.row]
-    //
-    //        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, _ in
-    //            StorageManager.deleteObject(place)
-    //            tableView.deleteRows(at: [indexPath], with: .automatic)
-    //        }
-    //
-    //        return UISwipeActionsConfiguration(actions: [deleteAction])
-    //    }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -102,12 +83,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         if segue.identifier == "showDetail" {
             let addPlaceVC = segue.destination as! AddPlaceViewController
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            let place: Place
-            if isFiltering {
-                place = filteredPlaces[indexPath.row]
-            } else {
-                place = places[indexPath.row]
-            }
+            let place = isFiltering ? filteredPlaces[indexPath.row] : places[indexPath.row]
             addPlaceVC.currentPlace = place
         }
     }
