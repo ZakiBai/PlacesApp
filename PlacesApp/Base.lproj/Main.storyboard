@@ -3,6 +3,7 @@
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -30,12 +31,26 @@
                                                     <rect key="frame" x="20" y="11" width="335" height="178"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cuG-mz-Yoh">
+                                                    <rect key="frame" x="293" y="127" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="QRw-Ss-3Ak"/>
+                                                        <constraint firstAttribute="width" constant="50" id="eCq-GE-pJV"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="map"/>
+                                                    <connections>
+                                                        <segue destination="iiq-em-sCO" kind="presentation" modalPresentationStyle="fullScreen" id="ZJf-Xd-4oP"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="SuK-0O-Hpg" firstAttribute="trailing" secondItem="vlY-Cr-3Zt" secondAttribute="trailingMargin" id="BBw-dp-36m"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="SuK-0O-Hpg" secondAttribute="bottom" id="HN6-TM-tsE"/>
                                                 <constraint firstItem="SuK-0O-Hpg" firstAttribute="top" secondItem="vlY-Cr-3Zt" secondAttribute="topMargin" id="NIa-yV-veh"/>
                                                 <constraint firstItem="SuK-0O-Hpg" firstAttribute="leading" secondItem="vlY-Cr-3Zt" secondAttribute="leadingMargin" id="e2C-Fh-ZsI"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="cuG-mz-Yoh" secondAttribute="bottom" constant="12" id="hVv-0n-Cqa"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="cuG-mz-Yoh" secondAttribute="trailing" constant="12" id="lWc-S2-o9t"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
@@ -222,6 +237,50 @@
             </objects>
             <point key="canvasLocation" x="773.60000000000002" y="-120.44334975369459"/>
         </scene>
+        <!--Map View Controller-->
+        <scene sceneID="FH4-BE-Epe">
+            <objects>
+                <viewController id="iiq-em-sCO" customClass="MapViewController" customModule="PlacesApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ibo-Y0-y1H">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XdT-A2-rUd">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <standardMapConfiguration key="preferredConfiguration"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ts6-qg-0Wt">
+                                <rect key="frame" x="286" y="67" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="SEd-5W-cVq"/>
+                                    <constraint firstAttribute="width" constant="40" id="rEp-Z9-2sJ"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="cancel">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="closeButtonTapped" destination="iiq-em-sCO" eventType="touchUpInside" id="WUh-5r-Mxs"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="R1s-in-pet"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="XdT-A2-rUd" firstAttribute="leading" secondItem="R1s-in-pet" secondAttribute="leading" id="Idv-xZ-qUu"/>
+                            <constraint firstItem="R1s-in-pet" firstAttribute="trailing" secondItem="ts6-qg-0Wt" secondAttribute="trailing" constant="49" id="U8b-T0-GlW"/>
+                            <constraint firstItem="R1s-in-pet" firstAttribute="trailing" secondItem="XdT-A2-rUd" secondAttribute="trailing" id="aeu-XB-EdX"/>
+                            <constraint firstItem="XdT-A2-rUd" firstAttribute="top" secondItem="Ibo-Y0-y1H" secondAttribute="top" id="e4M-m6-x7J"/>
+                            <constraint firstItem="ts6-qg-0Wt" firstAttribute="top" secondItem="R1s-in-pet" secondAttribute="top" constant="20" id="k3F-Ys-HNc"/>
+                            <constraint firstAttribute="bottom" secondItem="XdT-A2-rUd" secondAttribute="bottom" id="vzg-Ry-sfZ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4lL-RI-sVU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1600.8" y="-120.44334975369459"/>
+        </scene>
         <!--My Places-->
         <scene sceneID="gj9-WH-oSd">
             <objects>
@@ -406,6 +465,12 @@
         </scene>
     </scenes>
     <designables>
+        <designable name="GAK-5k-M01">
+            <size key="intrinsicContentSize" width="105" height="17"/>
+        </designable>
+        <designable name="Zq8-jW-QBq">
+            <size key="intrinsicContentSize" width="240" height="50"/>
+        </designable>
         <designable name="kSR-d6-Unx">
             <size key="intrinsicContentSize" width="251.99999999999997" height="44"/>
         </designable>
@@ -416,8 +481,10 @@
     <resources>
         <image name="AZ" width="25" height="24"/>
         <image name="Photo" width="194.66667175292969" height="195.66667175292969"/>
+        <image name="cancel" width="50" height="50"/>
         <image name="emptyStar" width="255" height="256"/>
         <image name="filledStar" width="237.5" height="238"/>
+        <image name="map" width="50" height="50"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
