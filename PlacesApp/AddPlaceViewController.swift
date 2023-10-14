@@ -74,12 +74,13 @@ class AddPlaceViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier != "showMap" {
-            return
-        }
+        if segue.identifier != "showMap" { return }
         
         guard let mapVC = segue.destination as? MapViewController else { return }
-        mapVC.place = currentPlace
+        mapVC.place.nameLabel = placeName.text!
+        mapVC.place.locationLabel = placeLocation.text
+        mapVC.place.typeLabel = placeType.text
+        mapVC.place.imageData = placeImage.image?.pngData()
     }
 
     @IBAction func cancelAction(_ sender: Any) {
@@ -88,13 +89,7 @@ class AddPlaceViewController: UITableViewController {
     
     func savePlace() {
         
-        var image: UIImage?
-        
-        if imageIsChanged {
-            image = placeImage.image
-        } else {
-            image = UIImage(named: "imagePlaceholder")
-        }
+        let image = imageIsChanged ? placeImage.image : UIImage(named: "imagePlaceholder")
 
         let imageData = image?.pngData()
         
