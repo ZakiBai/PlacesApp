@@ -40,7 +40,7 @@
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="map"/>
                                                     <connections>
-                                                        <segue destination="iiq-em-sCO" kind="presentation" modalPresentationStyle="fullScreen" id="ZJf-Xd-4oP"/>
+                                                        <segue destination="iiq-em-sCO" kind="presentation" identifier="showMap" modalPresentationStyle="fullScreen" id="ZJf-Xd-4oP"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -250,10 +250,10 @@
                                 <standardMapConfiguration key="preferredConfiguration"/>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ts6-qg-0Wt">
-                                <rect key="frame" x="286" y="67" width="40" height="40"/>
+                                <rect key="frame" x="252" y="67" width="74" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="SEd-5W-cVq"/>
-                                    <constraint firstAttribute="width" constant="40" id="rEp-Z9-2sJ"/>
+                                    <constraint firstAttribute="height" constant="50" id="SEd-5W-cVq"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="rEp-Z9-2sJ"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
@@ -276,6 +276,9 @@
                             <constraint firstAttribute="bottom" secondItem="XdT-A2-rUd" secondAttribute="bottom" id="vzg-Ry-sfZ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="XdT-A2-rUd" id="Upy-FJ-dFb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4lL-RI-sVU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

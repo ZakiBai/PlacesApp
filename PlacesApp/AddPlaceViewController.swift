@@ -72,6 +72,15 @@ class AddPlaceViewController: UITableViewController {
             view.endEditing(true)
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier != "showMap" {
+            return
+        }
+        
+        guard let mapVC = segue.destination as? MapViewController else { return }
+        mapVC.place = currentPlace
+    }
 
     @IBAction func cancelAction(_ sender: Any) {
         dismiss(animated: true)
