@@ -14,6 +14,7 @@ class MapViewController: UIViewController {
     var place = Place()
     let annotationIdentifier = "annotationIdentifier"
     let locationManager = CLLocationManager()
+    let regionInMeters = 1_000.00
     
     @IBOutlet var mapView: MKMapView!
     
@@ -23,6 +24,16 @@ class MapViewController: UIViewController {
         setupPlacemark()
         checkLocationServices()
     }
+    
+    @IBAction func centerViewInUserLocation() {
+        if let location = locationManager.location?.coordinate {
+            let region = MKCoordinateRegion(center: location,
+                                            latitudinalMeters: regionInMeters,
+                                            longitudinalMeters: regionInMeters)
+            mapView.setRegion(region, animated: true)
+        }
+    }
+    
     
     @IBAction func closeButtonTapped() {
         dismiss(animated: true)
@@ -57,7 +68,13 @@ class MapViewController: UIViewController {
             setupLocationManager()
             checkLocationAuthorization()
         } else {
-            // show alert controller
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.showAlert(
+                    title: "Location Services are Disabled",
+                    message: "To enable it go: Setting -> Privacy -> Location Services and turn On"
+                )
+            }
+            
         }
     }
     
@@ -72,10 +89,13 @@ class MapViewController: UIViewController {
             locationManager.requestWhenInUseAuthorization()
             break
         case .restricted:
-            //show alert controller
             break
         case .denied:
-            //show alert controller
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self.showAlert(
+                    title: "Your location is not Available",
+                    message: "To give permission Go to: Setting -> MyPlaces -> Location")
+            }
             break
         case .authorizedAlways:
             break
@@ -85,6 +105,14 @@ class MapViewController: UIViewController {
         @unknown default:
             print("New case is available")
         }
+    }
+    
+    private func showAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "ok", style: .default)
+        
+        alert.addAction(okAction)
+        present(alert, animated: true)
     }
 }
 

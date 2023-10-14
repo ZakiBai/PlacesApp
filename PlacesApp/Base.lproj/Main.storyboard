@@ -264,15 +264,29 @@
                                     <action selector="closeButtonTapped" destination="iiq-em-sCO" eventType="touchUpInside" id="WUh-5r-Mxs"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yB8-tj-Q2r">
+                                <rect key="frame" x="285" y="722" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="NS1-br-e8P"/>
+                                    <constraint firstAttribute="height" constant="50" id="O4D-wc-fmd"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="location"/>
+                                <connections>
+                                    <action selector="centerViewInUserLocation" destination="iiq-em-sCO" eventType="touchUpInside" id="vxp-hi-mLZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="R1s-in-pet"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="R1s-in-pet" firstAttribute="trailing" secondItem="yB8-tj-Q2r" secondAttribute="trailing" constant="40" id="CHG-C9-PMt"/>
                             <constraint firstItem="XdT-A2-rUd" firstAttribute="leading" secondItem="R1s-in-pet" secondAttribute="leading" id="Idv-xZ-qUu"/>
                             <constraint firstItem="R1s-in-pet" firstAttribute="trailing" secondItem="ts6-qg-0Wt" secondAttribute="trailing" constant="49" id="U8b-T0-GlW"/>
                             <constraint firstItem="R1s-in-pet" firstAttribute="trailing" secondItem="XdT-A2-rUd" secondAttribute="trailing" id="aeu-XB-EdX"/>
                             <constraint firstItem="XdT-A2-rUd" firstAttribute="top" secondItem="Ibo-Y0-y1H" secondAttribute="top" id="e4M-m6-x7J"/>
                             <constraint firstItem="ts6-qg-0Wt" firstAttribute="top" secondItem="R1s-in-pet" secondAttribute="top" constant="20" id="k3F-Ys-HNc"/>
+                            <constraint firstAttribute="bottom" secondItem="yB8-tj-Q2r" secondAttribute="bottom" constant="40" id="t1s-DS-v04"/>
                             <constraint firstAttribute="bottom" secondItem="XdT-A2-rUd" secondAttribute="bottom" id="vzg-Ry-sfZ"/>
                         </constraints>
                     </view>
@@ -487,6 +501,7 @@
         <image name="cancel" width="50" height="50"/>
         <image name="emptyStar" width="255" height="256"/>
         <image name="filledStar" width="237.5" height="238"/>
+        <image name="location" width="50" height="50"/>
         <image name="map" width="50" height="50"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
