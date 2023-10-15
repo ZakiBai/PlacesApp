@@ -72,6 +72,25 @@ class AddPlaceViewController: UITableViewController {
             view.endEditing(true)
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard let identifier = segue.identifier,
+              let mapVC = segue.destination as? MapViewController
+        else { return }
+        
+        mapVC.incomeSegueIdentifier = identifier
+        mapVC.mapViewControllerDelegate = self
+        
+        if identifier == "showMap" {
+            mapVC.place.nameLabel = placeName.text!
+            mapVC.place.locationLabel = placeLocation.text
+            mapVC.place.typeLabel = placeType.text
+            mapVC.place.imageData = placeImage.image?.pngData()
+        }
+        
+        
+    }
 
     @IBAction func cancelAction(_ sender: Any) {
         dismiss(animated: true)
@@ -79,13 +98,7 @@ class AddPlaceViewController: UITableViewController {
     
     func savePlace() {
         
-        var image: UIImage?
-        
-        if imageIsChanged {
-            image = placeImage.image
-        } else {
-            image = UIImage(named: "imagePlaceholder")
-        }
+        let image = imageIsChanged ? placeImage.image : UIImage(named: "imagePlaceholder")
 
         let imageData = image?.pngData()
         
@@ -170,4 +183,12 @@ extension AddPlaceViewController: UIImagePickerControllerDelegate, UINavigationC
         
         dismiss(animated: true)
     }
+}
+
+extension AddPlaceViewController: MapViewControllerDelegate {
+    func getAddress(_ address: String?) {
+        placeLocation.text = address
+    }
+    
+    
 }
