@@ -319,17 +319,31 @@
                                     <action selector="doneButtonPressed" destination="iiq-em-sCO" eventType="touchUpInside" id="cdP-bU-3qt"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Id-Lv-3MJ">
+                                <rect key="frame" x="162.66666666666666" y="718" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="DGP-uZ-2HP"/>
+                                    <constraint firstAttribute="height" constant="50" id="JX2-eT-5Ha"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="arrow"/>
+                                <connections>
+                                    <action selector="goButtonPressed" destination="iiq-em-sCO" eventType="touchUpInside" id="EyH-cj-Vlh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="R1s-in-pet"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="R1s-in-pet" firstAttribute="trailing" secondItem="RZZ-Cv-hQr" secondAttribute="trailing" constant="16" id="1Za-mg-ygD"/>
+                            <constraint firstItem="5Id-Lv-3MJ" firstAttribute="centerX" secondItem="Ibo-Y0-y1H" secondAttribute="centerX" id="47r-gW-33f"/>
                             <constraint firstItem="R1s-in-pet" firstAttribute="trailing" secondItem="yB8-tj-Q2r" secondAttribute="trailing" constant="40" id="CHG-C9-PMt"/>
                             <constraint firstItem="R1s-in-pet" firstAttribute="bottom" secondItem="2MG-xb-gZF" secondAttribute="bottom" constant="10" id="CTE-yk-Kqp"/>
                             <constraint firstItem="Rsv-Vi-fXy" firstAttribute="centerY" secondItem="Ibo-Y0-y1H" secondAttribute="centerY" constant="-20" id="DnQ-oq-jUK"/>
                             <constraint firstItem="RZZ-Cv-hQr" firstAttribute="top" secondItem="ts6-qg-0Wt" secondAttribute="bottom" constant="67" id="FW6-Rn-CSo"/>
                             <constraint firstItem="XdT-A2-rUd" firstAttribute="leading" secondItem="R1s-in-pet" secondAttribute="leading" id="Idv-xZ-qUu"/>
                             <constraint firstItem="RZZ-Cv-hQr" firstAttribute="leading" secondItem="R1s-in-pet" secondAttribute="leading" constant="16" id="PSZ-57-Xu2"/>
+                            <constraint firstItem="R1s-in-pet" firstAttribute="bottom" secondItem="5Id-Lv-3MJ" secondAttribute="bottom" constant="10" id="PuR-sg-O6u"/>
                             <constraint firstItem="R1s-in-pet" firstAttribute="trailing" secondItem="ts6-qg-0Wt" secondAttribute="trailing" constant="49" id="U8b-T0-GlW"/>
                             <constraint firstItem="R1s-in-pet" firstAttribute="trailing" secondItem="XdT-A2-rUd" secondAttribute="trailing" id="aeu-XB-EdX"/>
                             <constraint firstItem="XdT-A2-rUd" firstAttribute="top" secondItem="Ibo-Y0-y1H" secondAttribute="top" id="e4M-m6-x7J"/>
@@ -344,6 +358,7 @@
                     <connections>
                         <outlet property="addressLabel" destination="RZZ-Cv-hQr" id="SyT-Hb-jfb"/>
                         <outlet property="doneButton" destination="2MG-xb-gZF" id="Raa-Dx-SJW"/>
+                        <outlet property="goButton" destination="5Id-Lv-3MJ" id="u8n-hi-13f"/>
                         <outlet property="mapPinImage" destination="Rsv-Vi-fXy" id="XDH-Cd-Cgf"/>
                         <outlet property="mapView" destination="XdT-A2-rUd" id="Upy-FJ-dFb"/>
                     </connections>
@@ -547,12 +562,13 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="lX4-r2-OjM"/>
+        <segue reference="ZJf-Xd-4oP"/>
         <segue reference="Am7-sK-2ZG"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="AZ" width="25" height="24"/>
         <image name="Photo" width="194.66667175292969" height="195.66667175292969"/>
+        <image name="arrow" width="64" height="64"/>
         <image name="cancel" width="50" height="50"/>
         <image name="emptyStar" width="255" height="256"/>
         <image name="filledStar" width="237.5" height="238"/>
