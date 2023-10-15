@@ -9,9 +9,15 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController {
+protocol MapViewControllerDelegate {
+    func getAddress(_ address: String?)
+}
 
+class MapViewController: UIViewController {
+    
+    var mapViewControllerDelegate: MapViewControllerDelegate?
     var place = Place()
+    
     let annotationIdentifier = "annotationIdentifier"
     let locationManager = CLLocationManager()
     let regionInMeters = 1_000.00
@@ -42,6 +48,8 @@ class MapViewController: UIViewController {
     
     
     @IBAction func doneButtonPressed() {
+        mapViewControllerDelegate?.getAddress(addressLabel.text)
+        dismiss(animated: true)
     }
     
     private func setupMapView() {
