@@ -23,5 +23,5 @@ Places is an iOS application developed in Swift that allows users to manage a li
 - MapKit for location and mapping functionalities
 
 ## Screenshots
-
+![App Screenshot 1](https://github.com/YourUsername/YourRepository/raw/main/Screenshots/screenshot1.png)
 
