@@ -24,4 +24,4 @@ Places is an iOS application developed in Swift that allows users to manage a li
 
 ## Screenshots
 
-![Insert screenshots or images here]
+
